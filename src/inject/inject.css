@@ -1,3 +1,6 @@
 /**
  * Place your custom CSS styles here.
  **/
+ .item-edit-ts-bot {
+  background-color: #5C6AC4!important; color: #fff; padding: 5px 10px; font-size: 9px; display: block; margin: 15px 8px; z-index: 99999;position: absolute; display: none;
+}

@@ -1,7 +1,8 @@
 // ----------------------------------------------------------
 // THE BAG OF TRICKS!
 // ... but first, the vars!
-const tsbot_console_style = 'background:#eee;color:#7a4500';
+const tsbot_console_style = 'background:#feffe0;color:#7a4500';
+let windowURL = window.location.href;
 
 
 // ----------------------------------------------------------
@@ -13,9 +14,10 @@ function removeDevUI(){
 	var trickOneInterval = setInterval(function () {
 		clearInterval(trickOneInterval);
 		$(devUI).css( {display: "none"} );
-		console.log('%cTS BOT: Attempted to remove devUI.', tsbot_console_style);
-	},1000);
+		console.log('%cAttempted to remove devUI.', tsbot_console_style);
+	},2000);
 }
+
 
 // ----------------------------------------------------------
 // FUNCTION 2 - ADD in shortcut edit areas to Sections items
@@ -34,42 +36,71 @@ function addShortcutToSections(){
 			if( $(this).parent().attr('data-bind-attribute') ){
 				let itemFile = $(this).parent().attr('data-bind-attribute');
 				let arrItemFileName = String(itemFile).split('"');
-				let windowURL = window.location.href;
-				$(this).parent().prepend(`<a alt="Edit the ${arrItemFileName[3]}.liquid file" title="Edit the ${arrItemFileName[3]}.liquid file" target="_blank" class="btn item-edit-ts-bot" style="padding: 5px 10px; font-size: 8px; display: block; margin: 5px;z-index: 99999;position: absolute; display: none;" href="${windowURL.replace('/editor','')}?key=sections/${arrItemFileName[3]}.liquid">EDIT</a>`);
+				$(this).parent().prepend(`<a alt="Edit the ${arrItemFileName[3]}.liquid file" title="Edit the ${arrItemFileName[3]}.liquid file" target="_blank" class="item-edit-ts-bot" style="" href="${windowURL.replace('/editor','')}?key=sections/${arrItemFileName[3]}.liquid">EDIT</a>`);
 			}
 		});
-		console.log('%cTS BOT: Attempted to ADD Section shortcut tabs.', tsbot_console_style);
-	},3000);
+		console.log('%cAttempted to ADD Section shortcut tabs.', tsbot_console_style);
+	},2000);
 
 }
 
+// ----------------------------------------------------------
+// FUNCTION 3 - Change the Notification Text area for the better
+function changeNotificationLayout(){
+		$('.ui-layout__section--secondary').remove();
+		$('#email_template_body_html').removeAttr( 'style' );
+		$('#email_template_body_html').css({'min-height':'400px','max-height':'400px','height':'400px','resize':'both','overflow':'auto'});
+		console.log('%cNotifications - Attempted to change textarea.', tsbot_console_style);
+}
+
+
+// ----------------------------------------------------------
+// FUNCTION 4 - ADD a TS Dropdown for links like Language in the header
+function addTSButton(){
+	//let strThemeLanguageHTML = `<a href="${location.pathname}/language" class="ui-button ui-button--transparent ui-button--size-small" target="_blank">Edit Language</a>`;
+	let strThemeLanguageHTML = `<form>
+	<select class="tsbot-quick-links">
+	  <option value="">TS Links</option>
+		<option value="${location.pathname}/language" >Edit Language</option>
+		<option value="/admin/settings/files" >Files</option>
+		</select>
+		<form>`;
+	$('.template-editor-titlebar__actions').append(strThemeLanguageHTML);
+	console.log('%cLanguage button added', tsbot_console_style);
+}
+
+
+// ----------------------------------------------------------
+// FUNCTION 5 - Go to the bottom of stylesheets
+function goToBottomOfPage(){
+	let strThemeBTNScrollBottom = '<button class="ui-button ui-button--size-small tsbot-scroll-down">Scroll down</button>'
+  //	$('.theme-asset-actions>.ui-button-group').append(strThemeBTNScrollBottom);
+}
+
+// ----------------------------------------------------------
+// S T A R T    I T    U P !!!!
 
 chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
-		// Check settings...
+		// The Tasks!
+		console.group('TS Bag of Tricks');
 		removeDevUI();
 		addShortcutToSections();
-
-
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
-
+		changeNotificationLayout();
+		addTSButton();
+		goToBottomOfPage();
+		console.groupEnd();
 	}
-	}, 10);
+	}, 3000);
 });
 
-$( document ).ready(function() {
-   
-	$( ".theme-editor-action-list li a" )
-  .on("mouseup", function () {
-		console.log('%cTS BOT: TEST change.', tsbot_console_style);
-	});
 
+// ----------------------------------------------------------
+// D O C    R E A D Y
+$( document ).ready(function() {
 
 	var showEditInterval = setInterval(function () {
 		clearInterval(showEditInterval);
@@ -78,11 +109,31 @@ $( document ).ready(function() {
 			$( this ).parent().find('.item-edit-ts-bot').css("display", "block");
 		});
 
-	},4000);
+
+		$(function(){
+			$('.tsbot-quick-links').on('change', function () {
+					var url = $(this).val(); // get selected value
+					console.log(url);
+					if (url) { // require a URL
+							window.open( url ); // redirect
+							console.log('Tried to open...');
+					}
+					return false;
+			});
+		});
 
 	
+				$('.tsbot-scroll-down').on('click', function() {
+					console.log('scroll clicked');
+					//window.scrollTo(0,document.body.scrollHeight);
+					//window.scrollTo(0,document.querySelector(".CodeMirror-sizer").scrollHeight);
+					window.scrollTo(0,document.querySelector(".code-asset-container").scrollHeight);
+				});
+	
+	},4000);
+
+
+
 
 
 });
-
-	console.log('testhere');

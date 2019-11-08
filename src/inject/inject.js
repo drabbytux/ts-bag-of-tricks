@@ -26,8 +26,8 @@ function addShortcutToSections(){
 	let sectionDiv = ".theme-editor-action-list";
 	let sectionDivData = "data-bind-attribute";
 	
-	var trickTwoInterval = setInterval(function () {
-		clearInterval(trickTwoInterval);
+
+
 		// console.log( $(`${sectionDiv} li a `) );
 
 		// $(`${sectionDiv} li a`).css( { "background-color": "#ccc"} );theme-editor__icon
@@ -36,11 +36,13 @@ function addShortcutToSections(){
 			if( $(this).parent().attr('data-bind-attribute') ){
 				let itemFile = $(this).parent().attr('data-bind-attribute');
 				let arrItemFileName = String(itemFile).split('"');
-				$(this).parent().prepend(`<a alt="Edit the ${arrItemFileName[3]}.liquid file" title="Edit the ${arrItemFileName[3]}.liquid file" target="_blank" class="item-edit-ts-bot" style="" href="${windowURL.replace('/editor','')}?key=sections/${arrItemFileName[3]}.liquid">EDIT</a>`);
+				//$(this).parent().prepend(`<a alt="Edit the ${arrItemFileName[3]}.liquid file" title="Edit the ${arrItemFileName[3]}.liquid file" target="_blank" class="item-edit-ts-bot" style="" href="${windowURL.replace('/editor','')}?key=sections/${arrItemFileName[3]}.liquid">EDIT</a>`);
+				$(this).find('.stacked-menu__item-icon').parent().prepend(`<a alt="Edit the ${arrItemFileName[3]}.liquid file" title="Edit the ${arrItemFileName[3]}.liquid file" target="_blank" class="item-edit-ts-bot" style="" href="${windowURL.replace('/editor','')}?key=sections/${arrItemFileName[3]}.liquid"><span class="ts-edit-text">EDIT</span></a>`);
+				$(this).find('.stacked-menu__item-icon').parent().parent().addClass('ts-stacked-menu-item');
 			}
 		});
 		console.log('%cAttempted to ADD Section shortcut tabs.', tsbot_console_style);
-	},2000);
+
 
 }
 
@@ -77,6 +79,16 @@ function goToBottomOfPage(){
   //	$('.theme-asset-actions>.ui-button-group').append(strThemeBTNScrollBottom);
 }
 
+// FUNCTION 6 - Liquid Referrence
+function liquidReferrence(){
+	let urlRef = location.pathname;
+	if( urlRef.indexOf( 'admin/email_templates/' ) >= 0 ){
+		$(document).on("keypress", function(e) { 
+			console.log(e.key);
+		});
+	}
+}
+
 // ----------------------------------------------------------
 // S T A R T    I T    U P !!!!
 
@@ -85,14 +97,6 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
-		// The Tasks!
-		console.group('TS Bag of Tricks');
-		removeDevUI();
-		addShortcutToSections();
-		changeNotificationLayout();
-		addTSButton();
-		goToBottomOfPage();
-		console.groupEnd();
 	}
 	}, 3000);
 });
@@ -102,11 +106,37 @@ chrome.extension.sendMessage({}, function(response) {
 // D O C    R E A D Y
 $( document ).ready(function() {
 
+
 	var showEditInterval = setInterval(function () {
 		clearInterval(showEditInterval);
-		$('.theme-editor-action-list__item').on('mouseover', function() {
+
+		// The Tasks!
+		console.group('TS Bag of Tricks');
+		removeDevUI();
+		addShortcutToSections();
+		changeNotificationLayout();
+		addTSButton();
+		goToBottomOfPage();
+		liquidReferrence();
+
+	
+		console.groupEnd();
+
+
+		$('.ts-stacked-menu-item').on('mouseover', function() {
 			$('.item-edit-ts-bot').css("display", "none");
-			$( this ).parent().find('.item-edit-ts-bot').css("display", "block");
+			$( this ).parent().find('.item-edit-ts-bot').css("display", "flex");
+			$( this ).parent().find('.stacked-menu__item-icon').css("display", "none");
+
+		});
+		$('.ts-stacked-menu-item').on('mouseleave', function() {
+			$( this ).parent().find('.stacked-menu__item-icon').css("display", "inline-block");
+			$( this ).parent().find('.item-edit-ts-bot').css("display", "none");
+		});
+
+		$('.item-edit-ts-bot').on('click', function() {
+			window.open( $(this).attr('href')); 
+			return false;
 		});
 
 

@@ -2,5 +2,29 @@
  * Place your custom CSS styles here.
  **/
  .item-edit-ts-bot {
-  background-color: #5C6AC4!important; color: #fff; padding: 5px 10px; font-size: 9px; display: block; margin: 15px 8px; z-index: 99999;position: absolute; display: none;
+  background-color: #5C6AC4!important; color: #F4F5FA;
+  vertical-align: middle;
+  text-align:center;
+  font-size: 9px;
+  display: flex; 
+  justify-content: center;
+  align-content: center;
+  display: none;
+  border-radius: 5px;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+.item-edit-ts-bot:hover {
+  color: #fff; 
+  background-color: #202E78!important;
+}
+
+.ts-edit-text {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
 }

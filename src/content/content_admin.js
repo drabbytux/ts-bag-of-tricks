@@ -18,7 +18,6 @@ function removeDevUI(){
 	},2000);
 }
 
-
 // ----------------------------------------------------------
 // FUNCTION 2 - ADD in shortcut edit areas to Sections items
 function addShortcutToSections(){
@@ -117,11 +116,11 @@ $( document ).ready(function() {
 		addShortcutToSections();
 		changeNotificationLayout();
 		addTSButton();
+		/*
 		goToBottomOfPage();
 		liquidReferrence();
-	
+		*/
 		console.groupEnd();
-
 
 		$('.ts-stacked-menu-item').on('mouseover', function() {
 			$('.item-edit-ts-bot').css("display", "none");
@@ -139,7 +138,6 @@ $( document ).ready(function() {
 			return false;
 		});
 
-
 		$(function(){
 			$('.tsbot-quick-links').on('change', function () {
 					var url = $(this).val(); // get selected value
@@ -152,13 +150,12 @@ $( document ).ready(function() {
 			});
 		});
 
-	
-				$('.tsbot-scroll-down').on('click', function() {
-					console.log('scroll clicked');
-					//window.scrollTo(0,document.body.scrollHeight);
-					//window.scrollTo(0,document.querySelector(".CodeMirror-sizer").scrollHeight);
-					window.scrollTo(0,document.querySelector(".code-asset-container").scrollHeight);
-				});
+		$('.tsbot-scroll-down').on('click', function() {
+			console.log('scroll clicked');
+			//window.scrollTo(0,document.body.scrollHeight);
+			//window.scrollTo(0,document.querySelector(".CodeMirror-sizer").scrollHeight);
+			window.scrollTo(0,document.querySelector(".code-asset-container").scrollHeight);
+		});
 	
 	},4000);
 

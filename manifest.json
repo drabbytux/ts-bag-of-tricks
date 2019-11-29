@@ -1,6 +1,6 @@
 {
   "name": "TS Bag of Tricks",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "src/popup/popup.html"
@@ -24,17 +24,6 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "js/jquery/jquery.min.js", "src/content/content_all.js"
-      ],
-      "css": [
-        "src/content/content.css"
-      ]
-    },
-    {
-      "matches": [
         "https://*.myshopify.com/admin/*"
       ],
       "js": [
@@ -43,6 +32,11 @@
       "css": [
         "src/content/content.css"
       ]
+    },
+    {
+      "matches": ["https://github.com/Shopify/ts-gists/*"],
+      "js": ["jquery/jquery.min.js","content_github.js"],
+      "css": ["content.css", "github-style.css"]
     }
   ]
 }

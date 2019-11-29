@@ -1,6 +1,10 @@
 # TS Bag of Tricks!!
 A toolbox of handy fixes to allow Theme Specialists work more efficiently. 
 
+*Currently under BETA Testing:*
+
+https://chrome.google.com/webstore/detail/ts-bag-of-tricks/phcpaagdibfalgncmmfbbehapffgfkla
+
 ## Features so far
 
 ### 1 Section Quick Editor links

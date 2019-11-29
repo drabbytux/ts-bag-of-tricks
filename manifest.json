@@ -19,7 +19,10 @@
   },
   "options_page": "src/options/options.html",
   "permissions": [
-    "https://*/*", "tabs"
+    "tabs",
+    "https://*.myshopify.com/admin/*",
+    "https://github.com/Shopify/ts-gists/*"
+
   ],
   "content_scripts": [
     {
@@ -35,8 +38,8 @@
     },
     {
       "matches": ["https://github.com/Shopify/ts-gists/*"],
-      "js": ["jquery/jquery.min.js","content_github.js"],
-      "css": ["content.css", "github-style.css"]
+      "js": ["js/jquery/jquery.min.js","src/content/content_github.js"],
+      "css": ["src/content/content.css", "src/content/github.css"]
     }
   ]
 }

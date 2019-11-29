@@ -50,7 +50,7 @@
 }
 
 .new-testing {
-  
+  display: none;
   margin: 10px;
   border: 1px dashed red;
   background-color: #fff;

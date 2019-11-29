@@ -7,17 +7,15 @@ https://chrome.google.com/webstore/detail/ts-bag-of-tricks/phcpaagdibfalgncmmfbb
 
 ## Features so far
 
-### 1 Section Quick Editor links
-Can't tell which file to edit? Click to edit it quick!
-
-[![https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png](https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png)](https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png)
-
-### 2 Quick Links Dropdown
+### 1 Quick Links Dropdown
 Access the Files and Languages easier.
 
 [![https://screenshot.click/hp9up_2019-11-08-46z0bjbub5.png](https://screenshot.click/hp9up_2019-11-08-46z0bjbub5.png)](https://screenshot.click/hp9up_2019-11-08-46z0bjbub5.png)
 
-### 3 Notification Editor window fix
-Tired of jumping around the editor window when you edit it? Me too! This stabablized the height/width to make editing easier.
+### 2 Section Quick Editor links
+Can't tell which file to edit? Click to edit it quick!
 
-[![https://screenshot.click/h2qyb_2019-11-08-53kwgxry09.png](https://screenshot.click/h2qyb_2019-11-08-53kwgxry09.png)](https://screenshot.click/h2qyb_2019-11-08-53kwgxry09.png)
+[![https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png](https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png)](https://screenshot.click/xdu8c_2019-11-08-vdh66nu6fp.png)
+
+### 3 Theme filter picker on Github
+[![https://screenshot.click/9j2cp_2019-11-28-bc2cjkgs62.png](https://screenshot.click/9j2cp_2019-11-28-bc2cjkgs62.png)](https://screenshot.click/9j2cp_2019-11-28-bc2cjkgs62.png)

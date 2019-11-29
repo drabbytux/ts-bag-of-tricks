@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/src/content/content_all.js"></script>
   </head>
   <body>
      <div class="content">
       <div class="container">
         <h3>TS Bag of Tricks!</h3>
         <p>Options coming soon!</p>
+        <div class="qrCode">qr</div>
+        <div class="status">status</div>
         <!--
+          $('.qrcode').html(`<img src="https://api.qrserver.com/v1/create-qr-code/?data=${windowURL.replace('/editor','')}&amp;size=100x100" alt="" title="" style="width: 80px; height: 80px;" />`);
+
         <ul class="ks-cboxtags">
           <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">Show Quick Link in Code Editor</label></li>
           <li><input type="checkbox" id="checkboxTwo" value="Cotton Candy" checked><label for="checkboxTwo">Section Hover Edit button in Theme Editor</label></li>
@@ -19,5 +25,4 @@
       </div>
     </div>
   </body>
-  
 </html>

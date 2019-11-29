@@ -1,7 +1,10 @@
 {
   "name": "TS Bag of Tricks",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "src/popup/popup.html"
+  },
   "description": "An ongoing quick-fix extension for Theme Specialists at Shopify",
   "homepage_url": "http://stagetux.com",
   "icons": {
@@ -14,20 +17,20 @@
     ],
     "persistent": true
   },
-  "page_action": {
-    "default_popup": "src/popup/popup.html"
-  },
-  "options_page": "src/options_custom/index.html",
+  "options_page": "src/options/options.html",
   "permissions": [
-    "https://*.myshopify.com/admin/*"
+    "https://*/*", "tabs"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://*.myshopify.com/admin/*"
+        "<all_urls>"
+      ],
+      "js": [
+        "js/jquery/jquery.min.js", "src/content/content_all.js"
       ],
       "css": [
-        "src/inject/inject.css"
+        "src/content/content.css"
       ]
     },
     {
@@ -35,7 +38,10 @@
         "https://*.myshopify.com/admin/*"
       ],
       "js": [
-        "js/jquery/jquery.min.js", "src/inject/inject.js"
+        "js/jquery/jquery.min.js", "src/content/content_admin.js"
+      ],
+      "css": [
+        "src/content/content.css"
       ]
     }
   ]

@@ -89,6 +89,7 @@ function liquidReferrence(){
 	}
 }
 
+
 // ----------------------------------------------------------
 // S T A R T    I T    U P !!!!
 
@@ -118,7 +119,6 @@ $( document ).ready(function() {
 		addTSButton();
 		goToBottomOfPage();
 		liquidReferrence();
-
 	
 		console.groupEnd();
 
